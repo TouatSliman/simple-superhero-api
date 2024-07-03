@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT || process.env.port;
 
 app.use(express.json());
 
@@ -918,6 +918,12 @@ let items = [
   ],
 ];
 
+// GET all items
+app.get("/", (req, res) => {
+  res.send(items);
+  console.log("GET request to /items");
+});
+
 // documentation page
 
 app.get("/documentation", (req, res) => {
@@ -929,13 +935,6 @@ app.get("/documentation", (req, res) => {
       console.log("Sent:", fileName);
     }
   });
-});
-
-// GET all items
-
-app.get("/", (req, res) => {
-  res.status(200).send(items);
-  console.log("GET request to /items");
 });
 
 app.get("/names", (req, res) => {
