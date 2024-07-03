@@ -150,7 +150,7 @@
 
     async function get_data() {
       try {
-        const response = await fetch("https://simple-superhero-api-sba.onrender/");
+        const response = await fetch("https://simple-superhero-api.onrender/");
         const data = await response.json();
         console.log("Data fetched successfully:", data);
         main_title.innerHTML = data[0][number].name;
